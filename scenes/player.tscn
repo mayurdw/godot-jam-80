@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://n5iwprtdftwo"]
+
+[ext_resource type="Script" uid="uid://cvm888g8cumiq" path="res://scenes/player.gd" id="1_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://bmq0gvmt57fia" path="res://assets/alienYellow_round.png" id="2_g2els"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
+radius = 35.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_qhqgy")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dqkch")

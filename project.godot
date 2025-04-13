@@ -14,7 +14,24 @@ config/name="Godot Wild Jam 80"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[layer_names]
+
+2d_render/layer_1="Background"
+2d_render/layer_2="Playable"
+2d_render/layer_3="Foreground"
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Ground"
+2d_physics/layer_3="Collectables"
+2d_physics/layer_4="Breakable"
+2d_physics/layer_5="Attackers"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
