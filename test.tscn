@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8tajte41b52a"]
+
+[ext_resource type="Script" uid="uid://bmfe231ipno0t" path="res://node_2d.gd" id="1_8uh7m"]
+[ext_resource type="AudioStream" uid="uid://goahr66wpfm1" path="res://assets/sounds/DiscoLounge.ogg" id="2_8uh7m"]
+[ext_resource type="Script" uid="uid://chr2isso1lrhi" path="res://addons/rhythm_notifier/rhythm_notifier.gd" id="3_6uqi0"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_8uh7m")
+colors = Array[Color]([Color(0.74728, 0.328883, 0.290883, 1), Color(0.249598, 0.478589, 0.491904, 1), Color(0.648415, 0.661808, 0, 1)])
+
+[node name="RhythmNotifier" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player")]
+script = ExtResource("3_6uqi0")
+bpm = 120.0
+beat_length = 0.5
+audio_stream_player = NodePath("../Player")
+metadata/_custom_type_script = "uid://chr2isso1lrhi"
+
+[node name="Player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8uh7m")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -12.0
+offset_right = 1155.0
+offset_bottom = 636.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="beat" from="RhythmNotifier" to="." method="_on_rhythm_notifier_beat"]
