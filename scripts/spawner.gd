@@ -11,12 +11,6 @@ func _spawn_attacker() -> void:
 
 	# Set the mob's position to the random location.
 	scene.position = spawn_location.position
-
-	# Set the mob's direction perpendicular to the path direction.
-	#var direction = spawn_location.rotation + PI / 2
-#
-	## Add some randomness to the direction.
-	#direction += randf_range(-PI / 4, PI / 4)
 	
 	scene.direction = scene.position.direction_to(target_position.position)
 

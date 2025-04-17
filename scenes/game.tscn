@@ -15,6 +15,7 @@ position = Vector2(576, 324)
 collision_mask = 2
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("target_position") instance=ExtResource("3_lnu2h")]
+position = Vector2(576, 324)
 target_position = NodePath("../Player")
 
 [node name="MusicManager" parent="." instance=ExtResource("4_lbhrr")]
