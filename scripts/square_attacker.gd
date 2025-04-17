@@ -1,6 +1,10 @@
 extends Area2D
 
+@export var target_direction = Vector2.ZERO
 @export var speed: int = 300
+
+func _ready() -> void:
+	look_at(target_direction)
 
 func _process(delta: float) -> void:
 	position += transform.x * delta * speed

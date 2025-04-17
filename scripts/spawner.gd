@@ -3,7 +3,7 @@ extends Node
 @export var attackers : Array[PackedScene]
 @onready var spawn_path: Path2D = $SpawnPath
 @onready var spawn_location: PathFollow2D = $SpawnPath/SpawnLocation
-@export var target_position: Node2D
+@export var target_node: Node2D
 
 func _spawn_attacker() -> void:
 	var scene = attackers[0].instantiate()
@@ -13,6 +13,7 @@ func _spawn_attacker() -> void:
 	scene.position = spawn_location.position
 	var inward_angle = spawn_location.rotation + PI / 2
 	scene.rotation = inward_angle + randf_range( -PI / 4, PI / 4)
+	scene.target_direction = target_node.global_position
 
 	# Spawn the mob by adding it to the Main scene.
 	add_child(scene)
