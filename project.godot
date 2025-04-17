@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Godot Wild Jam 80"
+run/main_scene="uid://c044rpwosbu4y"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [display]
@@ -58,6 +59,10 @@ down={
 2d_physics/layer_2="Boundary"
 2d_physics/layer_3="Collectables"
 2d_physics/layer_4="Attackers"
+
+[physics]
+
+2d/default_gravity=0.0
 
 [rendering]
 

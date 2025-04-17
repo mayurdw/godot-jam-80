@@ -11,8 +11,8 @@ func _spawn_attacker() -> void:
 
 	# Set the mob's position to the random location.
 	scene.position = spawn_location.position
-	
-	scene.direction = scene.position.direction_to(target_position.position)
+	var inward_angle = spawn_location.rotation + PI / 2
+	scene.rotation = inward_angle + randf_range( -PI / 4, PI / 4)
 
 	# Spawn the mob by adding it to the Main scene.
 	add_child(scene)
