@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c044rpwosbu4y"]
+[gd_scene load_steps=4 format=3 uid="uid://c044rpwosbu4y"]
 
 [ext_resource type="PackedScene" uid="uid://c1lp8q6xeb0hl" path="res://scenes/play_area.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://n5iwprtdftwo" path="res://scenes/player.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bn5f56ta2uxg6" path="res://scenes/spawner.tscn" id="3_lnu2h"]
 
 [node name="Game" type="Node2D"]
 
@@ -11,3 +12,5 @@ position = Vector2(576, 324)
 [node name="Player" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(576, 324)
 collision_mask = 2
+
+[node name="Spawner" parent="." instance=ExtResource("3_lnu2h")]
