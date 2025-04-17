@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7hlqtpo2sgpr"]
+
+[ext_resource type="Script" uid="uid://bv6qaejyummvd" path="res://scripts/music_manager.gd" id="1_hetdf"]
+[ext_resource type="Script" uid="uid://chr2isso1lrhi" path="res://addons/rhythm_notifier/rhythm_notifier.gd" id="1_tn5dr"]
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_hetdf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="RhythmNotifier" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player")]
+script = ExtResource("1_tn5dr")
+audio_stream_player = NodePath("../AudioStreamPlayer")
+metadata/_custom_type_script = "uid://chr2isso1lrhi"
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="beat" from="RhythmNotifier" to="." method="_on_rhythm_notifier_beat"]

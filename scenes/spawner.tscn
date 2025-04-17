@@ -13,12 +13,7 @@ point_count = 5
 script = ExtResource("1_2vbf6")
 attackers = Array[PackedScene]([ExtResource("2_ik2nu")])
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
 [node name="SpawnPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_ik2nu")
 
 [node name="SpawnLocation" type="PathFollow2D" parent="SpawnPath"]
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
