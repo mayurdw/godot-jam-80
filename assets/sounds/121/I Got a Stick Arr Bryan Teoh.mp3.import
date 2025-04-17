@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dawx4y40s2222"
+path="res://.godot/imported/I Got a Stick Arr Bryan Teoh.mp3-cd10d676496ea46ff4e0d2df96040aea.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/121/I Got a Stick Arr Bryan Teoh.mp3"
+dest_files=["res://.godot/imported/I Got a Stick Arr Bryan Teoh.mp3-cd10d676496ea46ff4e0d2df96040aea.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
