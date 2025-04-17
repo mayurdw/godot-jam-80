@@ -3,12 +3,12 @@ extends Node
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var rhythm_notifier: RhythmNotifier = $RhythmNotifier
 
-@export var stream = preload("res://assets/sounds/DiscoLounge.ogg")
+@export var stream = preload("res://assets/sounds/82/Billy's Sacrifice.mp3")
 
 signal on_beat
 
 func _ready() -> void:
-	rhythm_notifier.bpm = 60
+	rhythm_notifier.bpm = 82
 	audio_stream_player.stream = stream
 	audio_stream_player.play()
 
