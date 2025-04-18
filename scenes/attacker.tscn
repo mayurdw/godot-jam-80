@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://uflhx1lgqa7k"]
+
+[ext_resource type="Script" uid="uid://bc87eoa7gtviv" path="res://scripts/attacker.gd" id="1_1rp2w"]
+[ext_resource type="Script" uid="uid://da0ulr6q4flck" path="res://scripts/attackerInfo.gd" id="2_cgqb6"]
+[ext_resource type="Script" uid="uid://f2p066rd6ixd" path="res://addons/2d_shapes/shapes/Rectangle.gd" id="3_tnm4o"]
+[ext_resource type="Script" uid="uid://b4q600p8cftqu" path="res://addons/2d_shapes/shapes/Star.gd" id="4_kks3n"]
+[ext_resource type="Script" uid="uid://0vbyiv1qd2ov" path="res://addons/2d_shapes/shapes/Ellipse.gd" id="5_naw70"]
+[ext_resource type="Script" uid="uid://cd0j26qpgy06u" path="res://addons/2d_shapes/shapes/Triangle.gd" id="6_ojond"]
+
+[sub_resource type="Resource" id="Resource_tie5b"]
+script = ExtResource("2_cgqb6")
+shape = 3
+color = 8599788
+speed = 300
+scale = 0.5
+metadata/_custom_type_script = "uid://da0ulr6q4flck"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aglep"]
+size = Vector2(90, 90)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_unlf3"]
+radius = 32.0
+height = 96.0
+
+[node name="Attacker" type="Area2D"]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_1rp2w")
+target_direction = Vector2(1, 1)
+info = SubResource("Resource_tie5b")
+
+[node name="SQUARE" type="Node2D" parent="."]
+visible = false
+script = ExtResource("3_tnm4o")
+square = true
+style = 1
+outline_width = 8
+metadata/_custom_type_script = "uid://f2p066rd6ixd"
+
+[node name="TRIANGLE" type="Node2D" parent="."]
+visible = false
+script = ExtResource("6_ojond")
+style = 1
+outline_width = 8
+metadata/_custom_type_script = "uid://cd0j26qpgy06u"
+
+[node name="ELLIPSE" type="Node2D" parent="."]
+visible = false
+script = ExtResource("5_naw70")
+size = Vector2(60, 100)
+style = 1
+outline_width = 8
+metadata/_custom_type_script = "uid://0vbyiv1qd2ov"
+
+[node name="STAR" type="Node2D" parent="."]
+visible = false
+script = ExtResource("4_kks3n")
+style = 1
+outline_width = 8
+metadata/_custom_type_script = "uid://b4q600p8cftqu"
+
+[node name="SQUARECollider" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_aglep")
+
+[node name="TRIANGLECollider" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-48, 40, 0, -48, 48, 40)
+
+[node name="ELLIPSECollider" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_unlf3")
+
+[node name="STARCollider" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-24, 40, 0, 24, 24, 40, 16, 8, 40, -8, 8, -8, 0, -40, -8, -8, -40, -8, -16, 16)
+
+[node name="Screen Notifier" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-50, -50, 100, 100)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="Screen Notifier" to="." method="_on_screen_notifier_screen_exited"]

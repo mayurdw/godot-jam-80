@@ -1,12 +1,30 @@
 extends Area2D
 
-@onready var collider: CollisionShape2D = $CollisionShape2D
+@export var target_direction = Vector2.ZERO
+@export var info: AttackerInfo
 
-@export_file("*.tscn") var attacker_shape : String
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var shape_scene = load(attacker_shape)
-	shape_scene.ini
-	var shape = RectangleShape2D.new()
-	shape.size = 
+	set_info(info)
+	look_at(target_direction)
+
+func set_info(info: AttackerInfo) -> void:
+	self.info = info
+	get_node("%s" % AttackerInfo.AttackerShape.keys()[info.shape]).visible = true
+	get_node("%s" % AttackerInfo.AttackerShape.keys()[info.shape]).outline_color = Color(info.color)
+	get_node("%sCollider" % AttackerInfo.AttackerShape.keys()[info.shape]).visible = true
+	scale = Vector2(info.scale, info.scale)
+
+func _process(delta: float) -> void:
+	position += transform.x * delta * info.speed
+
+func _on_screen_notifier_screen_exited() -> void:
+	call_deferred("queue_free")
+
+
+func _on_body_entered(body: Node2D) -> void:
+	# TODO: This needs to change
+	get_tree().quit()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	call_deferred("queue_free")
