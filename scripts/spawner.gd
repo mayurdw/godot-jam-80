@@ -3,7 +3,7 @@ extends Node
 @export var attackers : Array[PackedScene]
 @onready var spawn_path: Path2D = $SpawnPath
 @onready var spawn_location: PathFollow2D = $SpawnPath/SpawnLocation
-@export var target_node: Node2D
+@export var target_node: Node
 
 func _spawn_attacker() -> void:
 	var scene = attackers[0].instantiate()

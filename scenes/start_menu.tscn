@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkqhg4m8beflf"]
+[gd_scene load_steps=13 format=3 uid="uid://dkqhg4m8beflf"]
 
 [ext_resource type="Script" uid="uid://mqfkfp5bthyr" path="res://scripts/start_menu.gd" id="1_4v6gu"]
 [ext_resource type="Texture2D" uid="uid://bebpfdid1yro0" path="res://assets/images/Logo.png" id="1_fcv5n"]
@@ -6,9 +6,19 @@
 [ext_resource type="Texture2D" uid="uid://dp6toohhch7o" path="res://assets/images/right_pressed.png" id="2_thu50"]
 [ext_resource type="Texture2D" uid="uid://b2ue10aavvhb8" path="res://assets/images/exitLeft.png" id="3_h61rw"]
 [ext_resource type="Texture2D" uid="uid://1x1u0vpkwtoe" path="res://assets/images/exitLeft_pressed.png" id="4_fcv5n"]
+[ext_resource type="PackedScene" uid="uid://bn5f56ta2uxg6" path="res://scenes/spawner.tscn" id="7_u4qax"]
+[ext_resource type="PackedScene" uid="uid://c7hlqtpo2sgpr" path="res://scenes/music_manager.tscn" id="8_5byqq"]
+[ext_resource type="Script" uid="uid://c3foy8awq3ksy" path="res://scripts/track.gd" id="9_5byqq"]
+[ext_resource type="AudioStream" uid="uid://cfpe6kb3b6src" path="res://assets/sounds/135/ChillMenu.ogg" id="10_e58y3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4v6gu"]
 bg_color = Color(0.141176, 0.141176, 0.141176, 1)
+
+[sub_resource type="Resource" id="Resource_5byqq"]
+script = ExtResource("9_5byqq")
+trackStream = ExtResource("10_e58y3")
+bpm = 135
+metadata/_custom_type_script = "uid://c3foy8awq3ksy"
 
 [node name="Start Menu" type="Control"]
 layout_mode = 3
@@ -69,5 +79,13 @@ layout_mode = 2
 texture_normal = ExtResource("3_h61rw")
 texture_pressed = ExtResource("4_fcv5n")
 
+[node name="Spawner" parent="." node_paths=PackedStringArray("target_node") instance=ExtResource("7_u4qax")]
+position = Vector2(576, 324)
+target_node = NodePath("../Panel/CenterContainer/VBoxContainer/TextureRect")
+
+[node name="MusicManager" parent="." instance=ExtResource("8_5byqq")]
+tracks = Array[ExtResource("9_5byqq")]([SubResource("Resource_5byqq")])
+
 [connection signal="button_up" from="Panel/CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/Start" to="." method="_on_start_button_up"]
 [connection signal="button_up" from="Panel/CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/Exit" to="." method="_on_exit_button_up"]
+[connection signal="on_beat" from="MusicManager" to="Spawner" method="_spawn_attacker"]
