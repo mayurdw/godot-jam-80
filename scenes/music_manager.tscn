@@ -1,10 +1,103 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7hlqtpo2sgpr"]
+[gd_scene load_steps=30 format=3 uid="uid://c7hlqtpo2sgpr"]
 
 [ext_resource type="Script" uid="uid://bv6qaejyummvd" path="res://scripts/music_manager.gd" id="1_hetdf"]
 [ext_resource type="Script" uid="uid://chr2isso1lrhi" path="res://addons/rhythm_notifier/rhythm_notifier.gd" id="1_tn5dr"]
+[ext_resource type="Script" uid="uid://c3foy8awq3ksy" path="res://scripts/track.gd" id="2_jd6i5"]
+[ext_resource type="AudioStream" uid="uid://bf4ph825pt2y6" path="res://assets/sounds/82/Billy's Sacrifice.mp3" id="3_gbh8o"]
+[ext_resource type="AudioStream" uid="uid://cmiuv4mhx58pw" path="res://assets/sounds/82/BreakbeatChips.ogg" id="4_smbxl"]
+[ext_resource type="AudioStream" uid="uid://yn5oq17qm1eu" path="res://assets/sounds/82/Crash Landing.mp3" id="5_trwbn"]
+[ext_resource type="AudioStream" uid="uid://dwu7xieeccni5" path="res://assets/sounds/82/Race to Mars.mp3" id="6_8rps1"]
+[ext_resource type="AudioStream" uid="uid://13k6no51jytd" path="res://assets/sounds/104/CriticalTheme.ogg" id="7_14agi"]
+[ext_resource type="AudioStream" uid="uid://goahr66wpfm1" path="res://assets/sounds/104/DiscoLounge.ogg" id="8_pydb3"]
+[ext_resource type="AudioStream" uid="uid://he6qncpphhor" path="res://assets/sounds/118/Stringed Disco.mp3" id="9_1e2g0"]
+[ext_resource type="AudioStream" uid="uid://dawx4y40s2222" path="res://assets/sounds/121/I Got a Stick Arr Bryan Teoh.mp3" id="10_wltgq"]
+[ext_resource type="AudioStream" uid="uid://bt5l35xng78nq" path="res://assets/sounds/124/Cephalopod.ogg" id="11_a0mbb"]
+[ext_resource type="AudioStream" uid="uid://cv2tl4lke6xvj" path="res://assets/sounds/125/Werq.ogg" id="12_s0m46"]
+[ext_resource type="AudioStream" uid="uid://c5g5xgt4ih1sk" path="res://assets/sounds/129/DOS-88 - City Stomper.mp3" id="13_p0wtx"]
+[ext_resource type="AudioStream" uid="uid://cfpe6kb3b6src" path="res://assets/sounds/135/ChillMenu.ogg" id="14_4ffit"]
+[ext_resource type="AudioStream" uid="uid://by66pils1fnax" path="res://assets/sounds/138/DescendGameplay.ogg" id="15_y8pcy"]
+
+[sub_resource type="Resource" id="Resource_yodp2"]
+script = ExtResource("2_jd6i5")
+trackStream = ExtResource("3_gbh8o")
+bpm = 82
+metadata/_custom_type_script = "uid://c3foy8awq3ksy"
+
+[sub_resource type="Resource" id="Resource_xfpg5"]
+script = ExtResource("2_jd6i5")
+trackStream = ExtResource("5_trwbn")
+bpm = 82
+metadata/_custom_type_script = "uid://c3foy8awq3ksy"
+
+[sub_resource type="Resource" id="Resource_34pfl"]
+script = ExtResource("2_jd6i5")
+trackStream = ExtResource("6_8rps1")
+bpm = 82
+metadata/_custom_type_script = "uid://c3foy8awq3ksy"
+
+[sub_resource type="Resource" id="Resource_yl3cq"]
+script = ExtResource("2_jd6i5")
+trackStream = ExtResource("4_smbxl")
+bpm = 82
+metadata/_custom_type_script = "uid://c3foy8awq3ksy"
+
+[sub_resource type="Resource" id="Resource_gkubf"]
+script = ExtResource("2_jd6i5")
+trackStream = ExtResource("7_14agi")
+bpm = 104
+metadata/_custom_type_script = "uid://c3foy8awq3ksy"
+
+[sub_resource type="Resource" id="Resource_bjyu1"]
+script = ExtResource("2_jd6i5")
+trackStream = ExtResource("8_pydb3")
+bpm = 104
+metadata/_custom_type_script = "uid://c3foy8awq3ksy"
+
+[sub_resource type="Resource" id="Resource_kctle"]
+script = ExtResource("2_jd6i5")
+trackStream = ExtResource("9_1e2g0")
+bpm = 118
+metadata/_custom_type_script = "uid://c3foy8awq3ksy"
+
+[sub_resource type="Resource" id="Resource_wbrt1"]
+script = ExtResource("2_jd6i5")
+trackStream = ExtResource("10_wltgq")
+bpm = 121
+metadata/_custom_type_script = "uid://c3foy8awq3ksy"
+
+[sub_resource type="Resource" id="Resource_qfdk3"]
+script = ExtResource("2_jd6i5")
+trackStream = ExtResource("11_a0mbb")
+bpm = 124
+metadata/_custom_type_script = "uid://c3foy8awq3ksy"
+
+[sub_resource type="Resource" id="Resource_2gxaj"]
+script = ExtResource("2_jd6i5")
+trackStream = ExtResource("12_s0m46")
+bpm = 125
+metadata/_custom_type_script = "uid://c3foy8awq3ksy"
+
+[sub_resource type="Resource" id="Resource_fldef"]
+script = ExtResource("2_jd6i5")
+trackStream = ExtResource("13_p0wtx")
+bpm = 129
+metadata/_custom_type_script = "uid://c3foy8awq3ksy"
+
+[sub_resource type="Resource" id="Resource_yo6do"]
+script = ExtResource("2_jd6i5")
+trackStream = ExtResource("14_4ffit")
+bpm = 135
+metadata/_custom_type_script = "uid://c3foy8awq3ksy"
+
+[sub_resource type="Resource" id="Resource_bmjhy"]
+script = ExtResource("2_jd6i5")
+trackStream = ExtResource("15_y8pcy")
+bpm = 138
+metadata/_custom_type_script = "uid://c3foy8awq3ksy"
 
 [node name="MusicManager" type="Node"]
 script = ExtResource("1_hetdf")
+tracks = Array[ExtResource("2_jd6i5")]([SubResource("Resource_yodp2"), SubResource("Resource_xfpg5"), SubResource("Resource_34pfl"), SubResource("Resource_yl3cq"), SubResource("Resource_gkubf"), SubResource("Resource_bjyu1"), SubResource("Resource_kctle"), SubResource("Resource_wbrt1"), SubResource("Resource_qfdk3"), SubResource("Resource_2gxaj"), SubResource("Resource_fldef"), SubResource("Resource_yo6do"), SubResource("Resource_bmjhy")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
