@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkqhg4m8beflf"]
+
+[ext_resource type="Script" uid="uid://mqfkfp5bthyr" path="res://scripts/start_menu.gd" id="1_4v6gu"]
+[ext_resource type="Texture2D" uid="uid://bebpfdid1yro0" path="res://assets/images/Logo.png" id="1_fcv5n"]
+[ext_resource type="Texture2D" uid="uid://dim222nggb6we" path="res://assets/images/right.png" id="1_ouf4f"]
+[ext_resource type="Texture2D" uid="uid://dp6toohhch7o" path="res://assets/images/right_pressed.png" id="2_thu50"]
+[ext_resource type="Texture2D" uid="uid://b2ue10aavvhb8" path="res://assets/images/exitLeft.png" id="3_h61rw"]
+[ext_resource type="Texture2D" uid="uid://1x1u0vpkwtoe" path="res://assets/images/exitLeft_pressed.png" id="4_fcv5n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4v6gu"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 1)
+
+[node name="Start Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4v6gu")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4v6gu")
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_fcv5n")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 32
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Start" type="TextureButton" parent="Panel/CenterContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_ouf4f")
+texture_pressed = ExtResource("2_thu50")
+
+[node name="Exit" type="TextureButton" parent="Panel/CenterContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_h61rw")
+texture_pressed = ExtResource("4_fcv5n")
+
+[connection signal="button_up" from="Panel/CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/Start" to="." method="_on_start_button_up"]
+[connection signal="button_up" from="Panel/CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/Exit" to="." method="_on_exit_button_up"]
