@@ -3,6 +3,9 @@ extends Area2D
 @export var target_direction = Vector2.ZERO
 var info: AttackerInfo
 
+signal player_hit
+signal attacker_gone
+
 func _ready() -> void:
 	set_info()
 	look_at(target_direction)
@@ -22,12 +25,12 @@ func _process(delta: float) -> void:
 	position += transform.x * delta * info.speed
 
 func _on_screen_notifier_screen_exited() -> void:
+	attacker_gone.emit()
 	call_deferred("queue_free")
 
 
 func _on_body_entered(body: Node2D) -> void:
-	# TODO: This needs to change
-	get_tree().quit()
+	player_hit.emit()
 
 
 func _on_area_entered(area: Area2D) -> void:
@@ -36,4 +39,5 @@ func _on_area_entered(area: Area2D) -> void:
 	$Trail.emitting = false
 	$Explosion.emitting = true
 	await $Explosion.finished
+	attacker_gone.emit()
 	call_deferred("queue_free")

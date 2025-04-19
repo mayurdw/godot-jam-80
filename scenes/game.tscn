@@ -1,21 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://c044rpwosbu4y"]
+[gd_scene load_steps=7 format=3 uid="uid://c044rpwosbu4y"]
 
+[ext_resource type="Script" uid="uid://cbdv4mjf3ji2g" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://c1lp8q6xeb0hl" path="res://scenes/play_area.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://n5iwprtdftwo" path="res://scenes/player.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bn5f56ta2uxg6" path="res://scenes/spawner.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://c7hlqtpo2sgpr" path="res://scenes/music_manager.tscn" id="4_lbhrr"]
 
 [sub_resource type="Environment" id="Environment_lbhrr"]
-background_mode = 3
+background_mode = 1
+background_color = Color(0.141176, 0.141176, 0.141176, 1)
+background_energy_multiplier = 1.1
 glow_enabled = true
 glow_intensity = 1.1
 glow_bloom = 0.2
 glow_hdr_threshold = 0.5
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_iywne")
 
 [node name="Play Area" parent="." instance=ExtResource("1_yqjtg")]
 position = Vector2(576, 324)
+scale = Vector2(0.95, 0.95)
 
 [node name="Player" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(576, 324)
@@ -30,4 +35,16 @@ target_node = NodePath("../Player")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lbhrr")
 
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="attacker_gone" from="Spawner" to="." method="_on_spawner_attacker_gone"]
+[connection signal="player_hit" from="Spawner" to="." method="_on_spawner_player_hit"]
 [connection signal="on_beat" from="MusicManager" to="Spawner" method="_spawn_attacker"]
