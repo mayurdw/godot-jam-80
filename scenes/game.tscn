@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://c044rpwosbu4y"]
+[gd_scene load_steps=6 format=3 uid="uid://c044rpwosbu4y"]
 
 [ext_resource type="PackedScene" uid="uid://c1lp8q6xeb0hl" path="res://scenes/play_area.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://n5iwprtdftwo" path="res://scenes/player.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bn5f56ta2uxg6" path="res://scenes/spawner.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://c7hlqtpo2sgpr" path="res://scenes/music_manager.tscn" id="4_lbhrr"]
+
+[sub_resource type="Environment" id="Environment_lbhrr"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.1
+glow_bloom = 0.2
+glow_hdr_threshold = 0.5
 
 [node name="Game" type="Node2D"]
 
@@ -19,5 +26,8 @@ position = Vector2(576, 324)
 target_node = NodePath("../Player")
 
 [node name="MusicManager" parent="." instance=ExtResource("4_lbhrr")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lbhrr")
 
 [connection signal="on_beat" from="MusicManager" to="Spawner" method="_spawn_attacker"]

@@ -17,6 +17,7 @@ size = Vector2(35, 35)
 circle = true
 style = 1
 outline_width = 4
+outline_color = Color(0.678, 1.2, 0.184, 1)
 metadata/_custom_type_script = "uid://0vbyiv1qd2ov"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

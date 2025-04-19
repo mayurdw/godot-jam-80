@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dkqhg4m8beflf"]
+[gd_scene load_steps=14 format=3 uid="uid://dkqhg4m8beflf"]
 
 [ext_resource type="Script" uid="uid://mqfkfp5bthyr" path="res://scripts/start_menu.gd" id="1_4v6gu"]
 [ext_resource type="Texture2D" uid="uid://bebpfdid1yro0" path="res://assets/images/Logo.png" id="1_fcv5n"]
@@ -10,6 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://c7hlqtpo2sgpr" path="res://scenes/music_manager.tscn" id="8_5byqq"]
 [ext_resource type="Script" uid="uid://c3foy8awq3ksy" path="res://scripts/track.gd" id="9_5byqq"]
 [ext_resource type="AudioStream" uid="uid://cfpe6kb3b6src" path="res://assets/sounds/135/ChillMenu.ogg" id="10_e58y3"]
+
+[sub_resource type="Environment" id="Environment_e58y3"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.1
+glow_bloom = 0.2
+glow_hdr_threshold = 0.5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4v6gu"]
 bg_color = Color(0.141176, 0.141176, 0.141176, 1)
@@ -28,6 +35,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4v6gu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e58y3")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

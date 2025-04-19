@@ -11,8 +11,9 @@ func set_info() -> void:
 	info = AttackerInfo.new()
 	print("Info = %s" % AttackerInfo.AttackerShape.keys()[info.shape] )
 	get_node("%s" % AttackerInfo.AttackerShape.keys()[info.shape]).visible = true
-	get_node("%s" % AttackerInfo.AttackerShape.keys()[info.shape]).outline_color = Color(info.color, 1.0)
+	get_node("%s" % AttackerInfo.AttackerShape.keys()[info.shape]).outline_color = info.color
 	get_node("%sCollider" % AttackerInfo.AttackerShape.keys()[info.shape]).visible = true
+	$Trail.process_material.color = info.color
 	scale = Vector2(info.scale, info.scale)
 
 func _process(delta: float) -> void:

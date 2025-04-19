@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://uflhx1lgqa7k"]
+[gd_scene load_steps=11 format=3 uid="uid://uflhx1lgqa7k"]
 
 [ext_resource type="Script" uid="uid://bc87eoa7gtviv" path="res://scripts/attacker.gd" id="1_1rp2w"]
 [ext_resource type="Script" uid="uid://f2p066rd6ixd" path="res://addons/2d_shapes/shapes/Rectangle.gd" id="3_tnm4o"]
@@ -12,6 +12,23 @@ size = Vector2(90, 90)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_unlf3"]
 radius = 32.0
 height = 96.0
+
+[sub_resource type="Curve" id="Curve_unlf3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.962199, 0.333567), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tie5b"]
+curve = SubResource("Curve_unlf3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_unlf3"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(50, 1, 1)
+gravity = Vector3(0, 98, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_tie5b")
+color = Color(1.1, 1.1, 1.1, 1)
 
 [node name="Attacker" type="Area2D"]
 collision_layer = 8
@@ -67,6 +84,14 @@ polygon = PackedVector2Array(-24, 40, 0, 24, 24, 40, 16, 8, 40, -8, 8, -8, 0, -4
 
 [node name="Screen Notifier" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-50, -50, 100, 100)
+
+[node name="Trail" type="GPUParticles2D" parent="."]
+lifetime = 0.5
+speed_scale = 2.0
+randomness = 0.5
+use_fixed_seed = true
+seed = 4172031707
+process_material = SubResource("ParticleProcessMaterial_unlf3")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
