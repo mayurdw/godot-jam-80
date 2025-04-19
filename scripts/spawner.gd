@@ -1,12 +1,13 @@
 extends Node
 
-@export var attackers : Array[PackedScene]
 @onready var spawn_path: Path2D = $SpawnPath
 @onready var spawn_location: PathFollow2D = $SpawnPath/SpawnLocation
 @export var target_node: Node
 
+var attacker : PackedScene = preload("res://scenes/attacker.tscn")
+
 func _spawn_attacker() -> void:
-	var scene = attackers[0].instantiate()
+	var scene = attacker.instantiate()
 	spawn_location.progress_ratio = randf()
 
 	# Set the mob's position to the random location.

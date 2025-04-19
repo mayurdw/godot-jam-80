@@ -1,16 +1,17 @@
 extends Area2D
 
 @export var target_direction = Vector2.ZERO
-@export var info: AttackerInfo
+var info: AttackerInfo
 
 func _ready() -> void:
-	set_info(info)
+	set_info()
 	look_at(target_direction)
 
-func set_info(info: AttackerInfo) -> void:
-	self.info = info
+func set_info() -> void:
+	info = AttackerInfo.new()
+	print("Info = %s" % AttackerInfo.AttackerShape.keys()[info.shape] )
 	get_node("%s" % AttackerInfo.AttackerShape.keys()[info.shape]).visible = true
-	get_node("%s" % AttackerInfo.AttackerShape.keys()[info.shape]).outline_color = Color(info.color)
+	get_node("%s" % AttackerInfo.AttackerShape.keys()[info.shape]).outline_color = Color(info.color, 1.0)
 	get_node("%sCollider" % AttackerInfo.AttackerShape.keys()[info.shape]).visible = true
 	scale = Vector2(info.scale, info.scale)
 

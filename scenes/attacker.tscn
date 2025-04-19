@@ -1,19 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://uflhx1lgqa7k"]
+[gd_scene load_steps=8 format=3 uid="uid://uflhx1lgqa7k"]
 
 [ext_resource type="Script" uid="uid://bc87eoa7gtviv" path="res://scripts/attacker.gd" id="1_1rp2w"]
-[ext_resource type="Script" uid="uid://da0ulr6q4flck" path="res://scripts/attackerInfo.gd" id="2_cgqb6"]
 [ext_resource type="Script" uid="uid://f2p066rd6ixd" path="res://addons/2d_shapes/shapes/Rectangle.gd" id="3_tnm4o"]
 [ext_resource type="Script" uid="uid://b4q600p8cftqu" path="res://addons/2d_shapes/shapes/Star.gd" id="4_kks3n"]
 [ext_resource type="Script" uid="uid://0vbyiv1qd2ov" path="res://addons/2d_shapes/shapes/Ellipse.gd" id="5_naw70"]
 [ext_resource type="Script" uid="uid://cd0j26qpgy06u" path="res://addons/2d_shapes/shapes/Triangle.gd" id="6_ojond"]
-
-[sub_resource type="Resource" id="Resource_tie5b"]
-script = ExtResource("2_cgqb6")
-shape = 3
-color = 8599788
-speed = 300
-scale = 0.5
-metadata/_custom_type_script = "uid://da0ulr6q4flck"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aglep"]
 size = Vector2(90, 90)
@@ -27,7 +18,6 @@ collision_layer = 8
 collision_mask = 9
 script = ExtResource("1_1rp2w")
 target_direction = Vector2(1, 1)
-info = SubResource("Resource_tie5b")
 
 [node name="SQUARE" type="Node2D" parent="."]
 visible = false
